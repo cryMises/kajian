@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Rekomendasi Model AI — Cek yang Muat di Perangkatmu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#FFF6D8;
+    --paper-dot:#EAD9A8;
+    --card:#FFFDF4;
+    --card-soft:#FFF3C4;
+    --ink:#2D1E12;
+    --ink-soft:#5C4632;
+    --line:#2D1E12;
+    --yellow:#FFC91A;
+    --yellow-soft:#FFE873;
+    --red:#FF4B4B;
+    --pink:#FF8AC2;
+    --teal:#2ED3A6;
+    --purple:#7C5CFF;
+    --purple-soft:#CFC4FF;
+    --blue:#5B8CFF;
+    --green:#2ED3A6;
+    --shadow:5px 5px 0 var(--line);
+    --shadow-sm:3px 3px 0 var(--line);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#221C33;
+      --paper-dot:#372E52;
+      --card:#2E2745;
+      --card-soft:#3A3157;
+      --ink:#FFF3D6;
+      --ink-soft:#D8CBEF;
+      --line:#0E0B18;
+      --yellow:#FFC91A;
+      --yellow-soft:#8A6D00;
+      --purple-soft:#4B3D85;
+      --shadow:5px 5px 0 var(--line);
+      --shadow-sm:3px 3px 0 var(--line);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+  body{
+    margin:0;
+    font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--paper);
+    background-image:radial-gradient(var(--paper-dot) 1.3px, transparent 1.3px);
+    background-size:22px 22px;
+    color:var(--ink);
+    line-height:1.55;
+  }
+  button,[role="button"],select,input:not([type="checkbox"]){min-height:44px}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px 56px}
+
+  /* ---------- tape & stickers ---------- */
+  .tape{
+    position:absolute;top:-14px;left:22px;width:92px;height:26px;
+    background:var(--yellow);
+    background-image:repeating-linear-gradient(90deg, rgba(45,30,18,.14) 0 2px, transparent 2px 10px), repeating-linear-gradient(0deg, rgba(45,30,18,.10) 0 2px, transparent 2px 8px);
+    border:2px solid rgba(45,30,18,.25);
+    transform:rotate(-3deg);
+    border-radius:2px;
+  }
+  .tape.pink{background:var(--pink);left:auto;right:26px;transform:rotate(2.5deg)}
+  .tape.teal{background:var(--teal);transform:rotate(-2deg)}
+  .tape.purple{background:var(--purple-soft);transform:rotate(3deg)}
+  .sticker-badge{
+    display:inline-block;font-family:"Patrick Hand",cursive;letter-spacing:.04em;
+    background:var(--yellow);color:#2D1E12;border:2.5px solid #2D1E12;border-radius:9px;
+    padding:3px 10px;font-size:.82rem;transform:rotate(-1.5deg);box-shadow:2px 2px 0 #2D1E12;
+  }
+  .sticker-badge.pink{background:var(--pink)}
+  .sticker-badge.teal{background:var(--teal)}
+  .sticker-badge.purple{background:var(--purple);color:#fff}
+  .sticker-badge.red{background:var(--red);color:#fff}
+  .sticker-badge.white{background:#FFFDF4;color:#2D1E12}
+  @media (prefers-color-scheme: dark){ .sticker-badge.white{background:#2E2745;color:#FFF3D6;border-color:#0E0B18;box-shadow:2px 2px 0 #0E0B18} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;margin-top:26px;background:var(--card);
+    border:3px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
+    padding:30px 26px 26px;
+  }
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .hero-edition{font-family:"Patrick Hand",cursive;letter-spacing:.14em;font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;padding-top:8px}
+  h1{
+    font-family:"Gochi Hand",cursive;font-weight:400;
+    font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;margin:16px 0 6px;max-width:16ch;
+  }
+  h1 .hl{position:relative;white-space:nowrap}
+  h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:8px;background:var(--red);opacity:.75;border-radius:99px;transform:rotate(-.6deg)}
+  .hero-sub{max-width:58ch;color:var(--ink-soft);font-size:1.02rem;margin:10px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:8px}
+  @media(min-width:820px){ .hero-grid{grid-template-columns:1fr 210px;align-items:end} }
+  .mascot-box{text-align:center;padding-top:10px}
+  .mascot-box svg{width:168px;height:168px;filter:drop-shadow(4px 4px 0 rgba(45,30,18,.9))}
+  .mascot-cap{font-family:"Patrick Hand",cursive;background:var(--ink);color:var(--paper);display:inline-block;padding:3px 12px;border-radius:99px;font-size:.85rem;transform:rotate(-2deg);margin-top:2px}
+  @media (prefers-color-scheme: dark){ .mascot-cap{background:#FFF3D6;color:#2D1E12} }
+  .hero-steps{display:flex;flex-wrap:wrap;gap:8px 18px;margin:20px 0 4px;font-weight:800;font-size:.92rem;align-items:center}
+  .hero-steps .arr{color:var(--ink-soft);font-weight:400}
+  .hero-steps .n1{color:var(--red)} .hero-steps .n2{color:var(--blue)} .hero-steps .n3{color:#0E9F78}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+  .btn{
+    font-family:"Nunito",sans-serif;font-weight:900;font-size:.95rem;cursor:pointer;
+    border:3px solid var(--line);border-radius:99px;padding:10px 20px;background:var(--card);color:var(--ink);
+    box-shadow:var(--shadow-sm);text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+  .btn.red{background:var(--red);color:#fff}
+  .btn.yellow{background:var(--yellow);color:#2D1E12}
+  .btn.purple{background:var(--purple);color:#fff}
+  .btn.small{padding:6px 14px;font-size:.85rem;min-height:40px}
+
+  /* ---------- section heads ---------- */
+  .sec-head{display:flex;align-items:center;gap:16px;margin:44px 0 6px;flex-wrap:wrap}
+  .sec-head h2{font-family:"Gochi Hand",cursive;font-weight:400;font-size:clamp(1.6rem,4vw,2.2rem);margin:0}
+  .squiggle{height:8px;flex:0 0 150px}
+  .sec-sub{color:var(--ink-soft);margin:0 0 18px;max-width:70ch}
+  .dashed-sep{border:none;border-top:3px dashed color-mix(in srgb, var(--ink) 28%, transparent);margin:40px 0 0}
+
+  /* ---------- spec panel ---------- */
+  .spec-grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:820px){ .spec-grid{grid-template-columns:1.25fr .9fr} }
+  .note-card{
+    position:relative;background:var(--card);border:3px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:24px 20px 20px;
+  }
+  .spec-row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:2px dashed color-mix(in srgb, var(--ink) 22%, transparent)}
+  .spec-row:last-of-type{border-bottom:none}
+  .spec-label{font-family:"Patrick Hand",cursive;letter-spacing:.06em;font-size:.85rem;color:var(--ink-soft);text-transform:uppercase;padding-top:3px;flex:0 0 auto}
+  .spec-value{font-weight:900;text-align:right;overflow-wrap:anywhere}
+  .spec-value small{display:block;font-weight:700;color:var(--ink-soft);font-size:.8rem}
+  .detect-status{font-weight:800;font-size:.9rem;margin:2px 0 12px}
+  .detect-status.ok{color:#0E9F78}
+  .vram-box{background:var(--card-soft);border:2.5px dashed var(--line);border-radius:14px;padding:14px;margin-top:14px}
+  .vram-box h3{margin:0 0 4px;font-size:1rem;font-weight:900}
+  .vram-box p{margin:0 0 12px;font-size:.88rem;color:var(--ink-soft)}
+  .vram-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .vram-controls input[type="number"]{
+    width:92px;font:inherit;font-weight:900;padding:8px 10px;border:2.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);
+  }
+  .chip{
+    font:inherit;font-weight:800;font-size:.85rem;cursor:pointer;padding:6px 12px;min-height:40px;
+    border:2.5px solid var(--line);border-radius:99px;background:var(--card);color:var(--ink);
+  }
+  .chip[aria-pressed="true"]{background:var(--yellow);color:#2D1E12}
+  .ram-select{font:inherit;font-weight:800;padding:8px 10px;border:2.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+  /* blok memori integrated: VRAM + RAM satu grup, tipe input sama */
+  .mem-pickers{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
+  @media(min-width:560px){ .mem-pickers{grid-template-columns:1fr 1fr} }
+  .mem-picker{min-width:0}
+  .mem-picker + .mem-picker{border-top:2px dashed color-mix(in srgb, var(--ink) 22%, transparent);padding-top:16px}
+  @media(min-width:560px){ .mem-picker + .mem-picker{border-top:none;padding-top:0;border-left:2px dashed color-mix(in srgb, var(--ink) 22%, transparent);padding-left:18px} }
+  .mem-picker label{display:block;font-weight:900;font-size:.92rem;margin-bottom:8px}
+  .mem-picker label small{display:block;font-weight:700;color:var(--ink-soft);font-size:.8rem;margin-top:2px}
+  .mem-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .mem-controls input[type="number"]{
+    width:92px;font:inherit;font-weight:900;padding:8px 10px;border:2.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);
+  }
+  .mem-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .fineprint{font-size:.83rem;color:var(--ink-soft);margin-top:12px}
+
+  /* ---------- controls ---------- */
+  .controls{
+    position:relative;background:var(--card);border:3px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 20px 18px;margin-top:8px;
+  }
+  .tabs{display:flex;flex-wrap:wrap;gap:10px}
+  .tab{
+    font:inherit;font-weight:900;cursor:pointer;padding:10px 18px;border:3px solid var(--line);border-radius:99px;
+    background:var(--card);color:var(--ink);box-shadow:var(--shadow-sm);display:inline-flex;gap:8px;align-items:center;
+  }
+  .tab:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+  .tab[aria-selected="true"]{background:var(--purple);color:#fff}
+  .tab .cnt{font-size:.75rem;background:var(--yellow);color:#2D1E12;border:2px solid #2D1E12;border-radius:99px;padding:0 7px}
+  .controls-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px}
+  .controls-row label{font-weight:800;font-size:.9rem}
+  .search-input,.fit-select{
+    font:inherit;font-weight:700;padding:9px 12px;border:2.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);max-width:100%;
+  }
+  .search-input{flex:1 1 200px}
+  /* toggle switch */
+  .toggle-wrap{display:flex;align-items:center;gap:10px;background:var(--card-soft);border:2.5px dashed var(--line);border-radius:99px;padding:6px 8px 6px 14px}
+  .toggle-wrap .tlabel{font-weight:900;font-size:.9rem}
+  .switch{position:relative;width:62px;height:36px;min-height:36px;flex:0 0 auto;background:none;border:none;padding:0;cursor:pointer}
+  .switch .track{position:absolute;inset:0;background:var(--card);border:3px solid var(--line);border-radius:99px;pointer-events:none;transition:background .15s}
+  .switch .track::after{content:"";position:absolute;top:2px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--ink-soft);border:2.5px solid var(--line);transition:left .15s, background .15s}
+  .switch[aria-checked="true"] .track{background:var(--pink)}
+  .switch[aria-checked="true"] .track::after{left:29px;background:#fff}
+  .switch:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:99px}
+  .toggle-state{font-family:"Patrick Hand",cursive;font-size:.85rem;min-width:34px}
+
+  /* ---------- model cards ---------- */
+  .grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:26px}
+  @media(min-width:680px){ .grid{grid-template-columns:1fr 1fr} }
+  @media(min-width:1020px){ .grid{grid-template-columns:1fr 1fr 1fr} }
+  .model-card{
+    position:relative;background:var(--card);border:3px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 18px 16px;display:flex;flex-direction:column;gap:10px;
+  }
+  .model-card .tape{width:64px;height:20px;top:-11px;left:18px}
+  .rank{
+    position:absolute;top:12px;right:14px;font-family:"Gochi Hand",cursive;font-size:1.25rem;
+    background:var(--yellow);color:#2D1E12;border:2.5px solid #2D1E12;width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;transform:rotate(6deg);box-shadow:2px 2px 0 #2D1E12;
+  }
+  .model-name{font-weight:900;font-size:1.06rem;line-height:1.3;overflow-wrap:anywhere;padding-right:44px;margin:0}
+  .model-name a{text-decoration:none;border-bottom:3px solid var(--yellow)}
+  .model-name a:hover{border-bottom-color:var(--red)}
+  .author{font-size:.85rem;color:var(--ink-soft);font-weight:700;margin:-6px 0 0}
+  .stats{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;font-weight:800}
+  .stats span b{color:var(--ink)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:.72rem;font-weight:800;border:2px solid var(--line);border-radius:99px;padding:2px 9px;background:var(--card-soft);color:var(--ink)}
+  .tag.hot{background:var(--pink);color:#2D1E12}
+  .fit-badge{
+    align-self:flex-start;font-weight:900;font-size:.85rem;border:2.5px solid var(--line);border-radius:10px;
+    padding:5px 11px;box-shadow:2px 2px 0 var(--line);
+  }
+  .fit-gpu{background:var(--teal);color:#123528}
+  .fit-split{background:var(--yellow-soft);color:#2D1E12}
+  .fit-cpu{background:#FFD9A8;color:#2D1E12}
+  .fit-no{background:var(--red);color:#fff}
+  .fit-unknown{background:var(--card-soft);color:var(--ink-soft)}
+  .size-line{font-size:.88rem;font-weight:700;color:var(--ink-soft)}
+  .size-line b{color:var(--ink)}
+  .run-hint{font-size:.85rem;color:var(--ink-soft);border-top:2px dashed color-mix(in srgb, var(--ink) 22%, transparent);padding-top:10px;margin-top:auto}
+  .card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .empty-state,.loading-state,.error-state{
+    background:var(--card);border:3px dashed var(--line);border-radius:var(--radius);padding:28px 22px;text-align:center;margin-top:26px;
+  }
+  .empty-state h3,.loading-state h3,.error-state h3{font-family:"Gochi Hand",cursive;font-weight:400;font-size:1.5rem;margin:0 0 6px}
+  .spinner{width:34px;height:34px;border:5px solid var(--purple-soft);border-top-color:var(--purple);border-radius:50%;margin:0 auto 12px;animation:spin 0.9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .load-more-wrap{text-align:center;margin-top:28px}
+  .toast{
+    margin-top:14px;font-weight:800;font-size:.9rem;background:var(--teal);border:2.5px solid var(--line);color:#123528;
+    border-radius:10px;padding:8px 14px;display:none;
+  }
+  .toast.show{display:inline-block}
+
+  /* ---------- how it works notes ---------- */
+  .notes-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:8px}
+  @media(min-width:820px){ .notes-grid{grid-template-columns:repeat(3,1fr)} }
+  .note{position:relative;border:3px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:22px 18px 16px}
+  .note.y{background:#FFF0A6;color:#2D1E12}
+  .note.p{background:#FFD3E8;color:#2D1E12}
+  .note.t{background:#C9F5E6;color:#123528}
+  @media (prefers-color-scheme: dark){
+    .note.y{background:#5C4A08;color:#FFF3D6}.note.p{background:#5C2A44;color:#FFF3D6}.note.t{background:#14503C;color:#E8FFF6}
+  }
+  .note h3{font-family:"Patrick Hand",cursive;margin:0 0 6px;font-size:1.05rem;letter-spacing:.03em}
+  .note p{margin:0;font-size:.9rem}
+  .note .tape{width:56px;height:18px;top:-10px;left:50%;margin-left:-28px}
+  footer{margin-top:48px;border-top:3px dashed color-mix(in srgb, var(--ink) 28%, transparent);padding-top:18px;font-size:.85rem;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="tape" aria-hidden="true"></div>
+    <div class="hero-top">
+      <span class="sticker-badge">CATATAN MODEL AI</span>
+      <span class="hero-edition">Data langsung dari Hugging Face</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>Model AI apa yang <span class="hl">muat</span> di perangkatmu?</h1>
+        <p class="hero-sub">GPU kamu kami deteksi otomatis, VRAM-nya dicek dari tabel lookup, terus kami tampilin model yang lagi trending di Hugging Face — tapi cuma yang beneran muat di perangkatmu. Yang kegedean nggak bakal nongol. Kalau versi full-nya nggak muat tapi versi quant-nya muat, langsung kami cariin quant-nya di HF.</p>
+        <div class="hero-steps" aria-label="Cara kerja">
+          <span><span class="n1">●</span> 1. DETEKSI PERANGKAT</span><span class="arr">→</span>
+          <span><span class="n2">●</span> 2. KOREKSI VRAM + RAM</span><span class="arr">→</span>
+          <span><span class="n3">●</span> 3. PILIH MODELNYA</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn red" href="#rekomendasi">Lihat yang Muat Buatku</a>
+          <a class="btn" href="#spesifikasi">Cek Spek-ku</a>
+        </div>
+      </div>
+      <div class="mascot-box" aria-hidden="true">
+        <svg viewBox="0 0 200 200" role="img" aria-label="Maskot chip AI">
+          <g>
+            <g stroke="#2D1E12" stroke-width="5" stroke-linecap="round">
+              <line x1="45" y1="30" x2="45" y2="52"/><line x1="75" y1="24" x2="75" y2="52"/><line x1="105" y1="24" x2="105" y2="52"/><line x1="135" y1="30" x2="135" y2="52"/>
+              <line x1="45" y1="148" x2="45" y2="172"/><line x1="75" y1="148" x2="75" y2="176"/><line x1="105" y1="148" x2="105" y2="176"/><line x1="135" y1="148" x2="135" y2="172"/>
+              <line x1="24" y1="75" x2="50" y2="75"/><line x1="24" y1="105" x2="50" y2="105"/><line x1="24" y1="130" x2="50" y2="130"/>
+              <line x1="150" y1="75" x2="176" y2="75"/><line x1="150" y1="105" x2="176" y2="105"/><line x1="150" y1="130" x2="176" y2="130"/>
+            </g>
+            <rect x="48" y="50" width="104" height="100" rx="20" fill="#7C5CFF" stroke="#FFFDF4" stroke-width="10"/>
+            <rect x="48" y="50" width="104" height="100" rx="20" fill="none" stroke="#2D1E12" stroke-width="4"/>
+            <circle cx="82" cy="96" r="7" fill="#2D1E12"/><circle cx="118" cy="96" r="7" fill="#2D1E12"/>
+            <circle cx="84.5" cy="93.5" r="2.4" fill="#fff"/><circle cx="120.5" cy="93.5" r="2.4" fill="#fff"/>
+            <path d="M86 116 Q100 128 114 116" fill="none" stroke="#2D1E12" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="66" cy="112" r="7" fill="#FF8AC2" opacity=".85"/><circle cx="134" cy="112" r="7" fill="#FF8AC2" opacity=".85"/>
+            <path d="M100 58 L106 70 L94 70 Z" fill="#FFC91A" stroke="#2D1E12" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <div><span class="mascot-cap">Chippy siap ngecek!</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SPEK ================= -->
+  <section id="spesifikasi" aria-labelledby="spec-title">
+    <div class="sec-head">
+      <h2 id="spec-title">Spesifikasi Perangkatmu</h2>
+      <svg class="squiggle" viewBox="0 0 150 8" aria-hidden="true"><path d="M2 5 Q 20 1 38 5 T 74 5 T 110 5 T 146 5" fill="none" stroke="#5B8CFF" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <p class="sec-sub">GPU + VRAM itu patokan utamanya. CPU sama RAM di bawah ini cuma perkiraan dari browser — emang segitu doang yang boleh diakses, tapi cukup kok buat nentuin model mana aja yang muat.</p>
+
+    <div class="spec-grid">
+      <div class="note-card">
+        <div class="tape teal" aria-hidden="true"></div>
+        <p class="detect-status" id="detectStatus">Mendeteksi perangkat…</p>
+        <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value" id="specGpu">—</span></div>
+        <div class="spec-row"><span class="spec-label">VRAM (lookup)</span><span class="spec-value" id="specVramLookup">—</span></div>
+        <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value" id="specCpu">—</span></div>
+        <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value" id="specRam">—</span></div>
+        <div class="spec-row"><span class="spec-label">Sistem</span><span class="spec-value" id="specOs">—</span></div>
+
+        <div class="vram-box">
+          <h3>Memori yang dipakai: VRAM <span id="vramActiveLabel">—</span> · RAM <span id="ramActiveLabel">—</span></h3>
+          <p>VRAM sama RAM sekarang satu blok — dua-duanya diisi dengan cara yang sama (ketik angka GB-nya, atau tap pilihan cepatnya). Angka lookup kadang meleset dikit (misalnya varian laptop atau edisi khusus), dan RAM dari browser juga cuma perkiraan kasar. Kalau kamu tau angka aslimu, ganti aja di sini — daftar modelnya langsung dihitung ulang, dan tetep cuma yang muat yang tampil.</p>
+          <p id="integratedNote" style="display:none;margin:0 0 4px;font-weight:800;font-size:.9rem">GPU kamu <b>integrated</b> — nggak ada VRAM terpisah, GPU dan CPU berbagi RAM yang sama (integrated / unified memory). Jadi yang dihitung satu pool aja: RAM kamu, tanpa dobel hitung VRAM + RAM.</p>
+          <div class="mem-pickers">
+            <div class="mem-picker">
+              <label for="vramInput">VRAM (GPU)<small>Memori khusus kartu grafis — 0 kalau integrated / CPU aja</small></label>
+              <div class="mem-controls" role="group" aria-label="Koreksi VRAM">
+                <input type="number" id="vramInput" min="0" max="256" step="1" inputmode="numeric" aria-label="VRAM dalam GB" />
+                <span style="font-weight:900">GB</span>
+                <button class="btn yellow small" id="vramApply" type="button">Pakai</button>
+                <button class="btn small" id="vramReset" type="button">Reset ke Lookup</button>
+              </div>
+              <div class="mem-chips" role="group" aria-label="Pilihan cepat VRAM">
+                <button class="chip" type="button" data-vram="0">0</button>
+                <button class="chip" type="button" data-vram="4">4 GB</button>
+                <button class="chip" type="button" data-vram="6">6 GB</button>
+                <button class="chip" type="button" data-vram="8">8 GB</button>
+                <button class="chip" type="button" data-vram="12">12 GB</button>
+                <button class="chip" type="button" data-vram="16">16 GB</button>
+                <button class="chip" type="button" data-vram="24">24 GB</button>
+                <button class="chip" type="button" data-vram="32">32 GB</button>
+              </div>
+            </div>
+            <div class="mem-picker">
+              <label for="ramInput">RAM (sistem)<small>Buat split GPU+RAM atau jalan full di CPU</small></label>
+              <div class="mem-controls" role="group" aria-label="Koreksi RAM">
+                <input type="number" id="ramInput" min="0" max="256" step="1" inputmode="numeric" aria-label="RAM dalam GB" />
+                <span style="font-weight:900">GB</span>
+                <button class="btn yellow small" id="ramApply" type="button">Pakai</button>
+              </div>
+              <div class="mem-chips" role="group" aria-label="Pilihan cepat RAM">
+                <button class="chip" type="button" data-ram="4">4 GB</button>
+                <button class="chip" type="button" data-ram="8">8 GB</button>
+                <button class="chip" type="button" data-ram="16">16 GB</button>
+                <button class="chip" type="button" data-ram="32">32 GB</button>
+                <button class="chip" type="button" data-ram="64">64 GB</button>
+                <button class="chip" type="button" data-ram="128">128 GB</button>
+              </div>
+            </div>
+          </div>
+          <p class="fineprint" id="vramNote"></p>
+        </div>
+      </div>
+
+      <div class="note-card">
+        <div class="tape pink" aria-hidden="true"></div>
+        <span class="sticker-badge pink">CARA BACA LENCANA</span>
+        <p class="fineprint" style="margin-top:14px">Lencana di kartu model — yang tampil di daftar cuma yang muat:</p>
+        <p style="margin:6px 0 4px"><span class="fit-badge fit-gpu">Muat di GPU</span></p>
+        <p style="margin:4px 0;font-size:.88rem;color:var(--ink-soft)">Ukuran model + ruang kerja muat penuh di VRAM. Paling ngebut.</p>
+        <p style="margin:10px 0 4px"><span class="fit-badge fit-split">Split GPU + RAM</span> <span class="fit-badge fit-cpu">Jalan di CPU/RAM</span></p>
+        <p style="margin:4px 0;font-size:.88rem;color:var(--ink-soft)">Sebagian layer lari ke RAM (khusus model teks/GGUF) atau full CPU. Jalan sih, tapi lebih lambat.</p>
+        <p style="margin:10px 0 4px"><span class="sticker-badge teal">VERSI QUANT · GGUF</span></p>
+        <p style="margin:4px 0;font-size:.88rem;color:var(--ink-soft)">Artinya versi full-nya kegedean, tapi versi quant-nya muat — dan itu yang kami tampilin, udah dicariin langsung di HF.</p>
+        <p style="margin:10px 0 0;font-size:.88rem;color:var(--ink-soft)">Model yang nggak muat sama sekali (kegedean buat VRAM + RAM kamu) nggak kami tampilin. Titik.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dashed-sep" />
+
+  <!-- ================= REKOMENDASI ================= -->
+  <section id="rekomendasi" aria-labelledby="rec-title">
+    <div class="sec-head">
+      <h2 id="rec-title">Rekomendasi Model Trending</h2>
+      <svg class="squiggle" viewBox="0 0 150 8" aria-hidden="true"><path d="M2 5 Q 20 1 38 5 T 74 5 T 110 5 T 146 5" fill="none" stroke="#FF4B4B" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <p class="sec-sub">Diurutkan pakai <b>skor trending Hugging Face</b> (filter trending bawaan HF), bukan download sepanjang masa. Nomor di kartu = peringkat trending pas halaman ini dibuka. Dan sekali lagi: yang nongol di sini <b>cuma yang muat</b> di perangkatmu — kalau versi full-nya kegedean tapi versi quant (GGUF) muat, kami otomatis nyari versi quant-nya di HF dan itu yang ditampilin.</p>
+
+    <div class="controls">
+      <div class="tape purple" aria-hidden="true"></div>
+      <div class="tabs" role="tablist" aria-label="Kategori model">
+        <button class="tab" role="tab" id="tab-text" aria-selected="true" data-cat="text" type="button">Teks ke Teks</button>
+        <button class="tab" role="tab" id="tab-image" aria-selected="false" data-cat="image" type="button">Teks ke Gambar</button>
+        <button class="tab" role="tab" id="tab-video" aria-selected="false" data-cat="video" type="button">Teks ke Video</button>
+      </div>
+      <div class="controls-row">
+        <div class="toggle-wrap">
+          <span class="tlabel" id="uncLabel">Model Uncensored</span>
+          <button class="switch" id="uncToggle" type="button" role="switch" aria-checked="false" aria-label="Model Uncensored">
+            <span class="track" aria-hidden="true"></span>
+          </button>
+          <span class="toggle-state" id="uncState">MATI</span>
+        </div>
+        <input class="search-input" id="searchInput" type="search" placeholder="Cari nama model atau tag… (mis. qwen, flux, gguf)" aria-label="Cari model" />
+        <button class="btn small" id="refreshBtn" type="button">↻ Refresh Data HF</button>
+      </div>
+      <p class="fineprint" style="margin-bottom:0">Daftar ini <b>cuma isinya model yang muat</b> di perangkatmu — sisanya disembunyiin. Toggle <b>Uncensored</b> itu filter eksklusif: pas <b>MATI</b>, model uncensored (ketauan dari <b>tag HF + nama model</b>, mis. “uncensored”, “abliterated”, “nsfw”) <b>hilang total</b>; pas <b>NYALA</b>, kebalikannya — <b>cuma model uncensored yang tampil</b> (pake lencana UNCENSORED), model biasa hilang semua.</p>
+    </div>
+
+    <div id="listArea" aria-live="polite"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="btn purple" id="loadMoreBtn" type="button">Tampilkan Lebih Banyak</button>
+    </div>
+    <div><span class="toast" id="toast" role="status"></span></div>
+  </section>
+
+  <hr class="dashed-sep" />
+
+  <!-- ================= CARA HITUNG ================= -->
+  <section aria-labelledby="how-title">
+    <div class="sec-head"><h2 id="how-title">Cara Hitung Kecocokannya</h2></div>
+    <div class="notes-grid">
+      <div class="note y"><div class="tape" aria-hidden="true"></div>
+        <h3>1 · UKURAN ASLI DARI HF</h3>
+        <p>Ukuran diambil dari daftar file repo-nya di Hugging Face. Ada file GGUF? Yang dipakai ukuran quant Q4_K_M (atau yang paling deket) — ukuran yang realistis buat jalan lokal. Nggak ada? Berarti total file safetensors-nya.</p>
+      </div>
+      <div class="note p"><div class="tape pink" aria-hidden="true"></div>
+        <h3>2 · DITAMBAH RUANG KERJA</h3>
+        <p>Model nggak jalan sendirian: ada cache KV / memori kerja. Hitungan kami: ukuran file × 1,15 + 0,6 GB. Makanya model 7 GB belum tentu muat di VRAM 8 GB — sengaja dibikin nggak mepet.</p>
+      </div>
+      <div class="note t"><div class="tape teal" aria-hidden="true"></div>
+        <h3>3 · QUANT DICARIIN OTOMATIS</h3>
+        <p>Versi full nggak muat tapi quant-nya muat? Kami langsung nyari versi GGUF-nya di Hugging Face dan nampilin itu, lengkap sama link + perintah download-nya. Jadi yang kamu liat selalu yang bisa kamu jalanin.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>DATA: HUGGING FACE API · DIURUTKAN PAKAI SKOR TRENDING HF</span>
+    <span>DETEKSI GPU VIA WEBGL · VRAM DARI TABEL LOOKUP + KOREKSIMU</span>
+  </footer>
+</div>
+<script>
+(function(){
+"use strict";
+var $ = function(id){ return document.getElementById(id); };
+
+/* ================= VRAM LOOKUP TABLE =================
+   [pola nama GPU (huruf kecil), VRAM GB, catatan]
+   Diurutkan dari yang paling spesifik saat dicocokkan. */
+var VRAM_TABLE = [
+  ["rtx 5090",32,""],["rtx 5080",16,""],["rtx 5070 ti",16,""],["rtx 5070",12,""],
+  ["rtx 5060 ti",16,"Ada juga varian 8 GB — koreksi kalau kartumu 8 GB"],
+  ["rtx 5060",8,""],["rtx 5050",8,""],
+  ["rtx 4090 laptop",16,"Varian laptop"],["rtx 4090",24,""],
+  ["rtx 4080 laptop",12,"Varian laptop"],["rtx 4080 super",16,""],["rtx 4080",16,""],
+  ["rtx 4070 ti super",16,""],["rtx 4070 ti",12,""],
+  ["rtx 4070 laptop",8,"Varian laptop"],["rtx 4070 super",12,""],["rtx 4070",12,""],
+  ["rtx 4060 ti",16,"Ada juga varian 8 GB — koreksi kalau kartumu 8 GB"],
+  ["rtx 4060 laptop",8,"Varian laptop"],["rtx 4060",8,""],
+  ["rtx 4050",6,""],
+  ["rtx 3090 ti",24,""],["rtx 3090",24,""],
+  ["rtx 3080 ti laptop",16,"Varian laptop"],["rtx 3080 ti",12,""],
+  ["rtx 3080 laptop",16,"Ada juga varian 8 GB — koreksi kalau perlu"],
+  ["rtx 3080",12,"Ada juga varian awal 10 GB — koreksi kalau kartumu 10 GB"],
+  ["rtx 3070 ti laptop",8,"Varian laptop"],["rtx 3070 ti",8,""],
+  ["rtx 3070 laptop",8,"Varian laptop"],["rtx 3070",8,""],
+  ["rtx 3060 ti",8,""],["rtx 3060 laptop",6,"Varian laptop"],["rtx 3060",12,""],
+  ["rtx 3050 ti laptop",4,"Varian laptop"],["rtx 3050 laptop",4,"Varian laptop"],["rtx 3050",8,"Ada juga varian 6 GB — koreksi kalau perlu"],
+  ["rtx 2080 ti",11,""],["rtx 2080 super",8,""],["rtx 2080",8,""],
+  ["rtx 2070 super",8,""],["rtx 2070",8,""],
+  ["rtx 2060 super",8,""],["rtx 2060",12,"Ada juga varian awal 6 GB — koreksi kalau kartumu 6 GB"],
+  ["gtx 1660 ti",6,""],["gtx 1660 super",6,""],["gtx 1660",6,""],["gtx 1650 super",4,""],["gtx 1650",4,""],
+  ["gtx 1080 ti",11,""],["gtx 1080",8,""],["gtx 1070 ti",8,""],["gtx 1070",8,""],["gtx 1060",6,"Ada juga varian 3 GB"],["gtx 1050 ti",4,""],["gtx 1050",2,""],
+  ["h100",80,""],["h200",141,""],["a100",80,"Ada juga varian 40 GB — koreksi kalau perlu"],
+  ["a40",48,""],["a6000",48,""],["l40",48,""],["v100",32,"Ada juga varian 16 GB"],
+  ["t4",16,""],["p100",16,""],["quadro rtx 6000",24,""],["rtx a6000",48,""],["rtx a5000",24,""],["rtx a4000",16,""],
+  ["rx 9070 xt",16,""],["rx 9070",16,""],["rx 9060 xt",16,"Ada juga varian 8 GB — koreksi kalau perlu"],["rx 9060",8,""],
+  ["rx 7900 xtx",24,""],["rx 7900 xt",20,""],["rx 7900 gre",16,""],
+  ["rx 7800 xt",16,""],["rx 7700 xt",12,""],["rx 7600 xt",16,""],["rx 7600",8,""],
+  ["rx 6950 xt",16,""],["rx 6900 xt",16,""],["rx 6800 xt",16,""],["rx 6800",16,""],
+  ["rx 6750 xt",12,""],["rx 6700 xt",12,""],["rx 6700",10,""],["rx 6650 xt",8,""],["rx 6600 xt",8,""],["rx 6600",8,""],["rx 6500 xt",4,""],["rx 6400",4,""],
+  ["rx 5700 xt",8,""],["rx 5700",8,""],["rx 5600 xt",6,""],["rx 5500 xt",8,"Ada juga varian 4 GB"],
+  ["radeon vii",16,""],["vega 64",8,""],["vega 56",8,""],
+  ["arc a770",16,""],["arc a750",8,""],["arc a580",8,""],["arc a380",6,""],["arc b580",12,""],["arc b570",10,""],
+  ["apple m4 max",36,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m4 pro",24,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m4",16,"Memori integrated (unified), konfigurasi dasar — bisa 24/32 GB"],
+  ["apple m3 max",36,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m3 pro",18,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m3",8,"Memori integrated (unified), konfigurasi dasar — bisa 16/24 GB"],
+  ["apple m2 max",32,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m2 pro",16,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m2",8,"Memori integrated (unified), konfigurasi dasar — bisa 16/24 GB"],
+  ["apple m1 max",32,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m1 pro",16,"Memori integrated (unified) — dibagi dengan RAM sistem"],
+  ["apple m1",8,"Memori integrated (unified), konfigurasi dasar — bisa 16 GB"],
+  ["apple gpu",8,"GPU Apple integrated — VRAM dibagi dengan RAM, koreksi manual disarankan"]
+];
+function lookupVRAM(renderer){
+  var r = (renderer||"").toLowerCase();
+  var best = null;
+  for (var i=0;i<VRAM_TABLE.length;i++){
+    if (r.indexOf(VRAM_TABLE[i][0]) !== -1){
+      if (!best || VRAM_TABLE[i][0].length > best[0].length) best = VRAM_TABLE[i];
+    }
+  }
+  return best;
+}
+function isIntegrated(renderer){
+  var r=(renderer||"").toLowerCase();
+  return /intel.*(uhd|hd graphics|iris)/.test(r) || /apple/.test(r) || /adreno/.test(r) || /mali/.test(r) || /radeon graphics/.test(r) || /vega [0-9]+ graphics/.test(r) || /swiftshader|llvmpipe|software/.test(r);
+}
+
+/* ================= STATE ================= */
+var state = {
+  gpuName: "Tidak terdeteksi",
+  vramLookup: null,
+  vramNote: "",
+  vram: 0,
+  ram: 8,
+  integrated: false,
+  category: "text",
+  showUncensored: false,
+  search: "",
+  models: [],        // semua model kategori aktif dari HF
+  shown: 9,
+  sizeCache: {},
+  quantCache: {}     // per model: undefined | "searching" | "none" | {repo, info}
+};
+var PAGE = 9;
+
+/* ================= DETEKSI PERANGKAT ================= */
+function detectGPU(){
+  try{
+    var canvas = document.createElement("canvas");
+    var gl = canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!gl) return null;
+    var ext = gl.getExtension("WEBGL_debug_renderer_info");
+    var renderer = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+    if (!renderer) return null;
+    var m = /ANGLE \((.*)\)/.exec(renderer);
+    if (m){
+      var parts = m[1].split(",").map(function(s){return s.trim();});
+      // Format umum: ANGLE (Vendor, GPU Name Direct3D11 vs_5_0 ps_5_0, D3D11)
+      var cand = parts.filter(function(p){ return !/^(direct3d|d3d|opengl|metal|vulkan)/i.test(p) && !/^(nvidia|amd|intel|apple|qualcomm|arm)$/i.test(p); });
+      renderer = cand.length ? cand[cand.length-1].replace(/\s+(Direct3D|OpenGL|Metal|Vulkan).*$/i,"") : parts.join(", ");
+      if (parts.length && /^(nvidia|amd|intel|apple)$/i.test(parts[0]) && renderer.toLowerCase().indexOf(parts[0].toLowerCase())===-1){
+        // biarkan nama GPU apa adanya
+      }
+    }
+    return renderer.trim();
+  }catch(e){ return null; }
+}
+function detectSpecs(){
+  var status = $("detectStatus");
+  var gpu = detectGPU();
+  if (gpu){
+    state.gpuName = gpu;
+    state.integrated = isIntegrated(gpu);
+    var hit = lookupVRAM(gpu);
+    if (hit){
+      state.vramLookup = hit[1];
+      state.vramNote = hit[2] || "";
+      state.vram = hit[1];
+    } else if (isIntegrated(gpu)){
+      state.vramLookup = 0;
+      state.vramNote = "GPU integrated / tanpa VRAM khusus — model jalan dari RAM sistem.";
+      state.vram = 0;
+    } else {
+      state.vramLookup = null;
+      state.vramNote = "GPU ini belum ada di tabel lookup kami. Isi VRAM manual di bawah biar lencananya akurat.";
+      state.vram = 0;
+    }
+    status.textContent = "✓ Berhasil dideteksi otomatis dari browser.";
+    status.className = "detect-status ok";
+  } else {
+    status.textContent = "Browser ngeblokir deteksi GPU (WebGL mati / mode privat). Isi VRAM manual di bawah aja — rekomendasinya tetep jalan kok.";
+    status.className = "detect-status";
+    state.vramNote = "Tanpa deteksi GPU, VRAM dianggap 0 sampai kamu mengisinya manual.";
+  }
+  $("specGpu").textContent = state.gpuName;
+  $("specVramLookup").innerHTML = state.vramLookup === null ? "Belum dikenal" :
+    (state.vramLookup === 0 ? "0 GB (integrated)" : state.vramLookup + " GB") +
+    (state.vramNote ? "<small>"+escapeHtml(state.vramNote)+"</small>" : "");
+
+  var cores = navigator.hardwareConcurrency || null;
+  var ua = navigator.userAgent || "";
+  var cpuTxt = cores ? cores + " core logis" : "Tidak diketahui";
+  cpuTxt += "<small>Nama CPU tidak dibuka browser — hanya jumlah core + arsitektur</small>";
+  $("specCpu").innerHTML = cpuTxt;
+
+  var dm = navigator.deviceMemory || null;
+  if (dm){ state.ram = dm; }
+  $("specRam").innerHTML = (dm ? "± " + dm + " GB" : "Tidak dibuka browser (dipakai 8 GB)") + "<small>Perkiraan kasar — browser membulatkan ke 2/4/8 GB</small>";
+  if (state.integrated) $("integratedNote").style.display = "block";
+
+  var os = "Tidak diketahui";
+  if (/Windows/i.test(ua)) os = "Windows";
+  else if (/Android/i.test(ua)) os = "Android";
+  else if (/iPhone|iPad|iPod/i.test(ua)) os = "iOS";
+  else if (/Mac OS/i.test(ua)) os = "macOS";
+  else if (/Linux/i.test(ua)) os = "Linux";
+  var arch = /arm64|aarch64/i.test(ua) ? " · ARM64" : (/x86_64|Win64|x64/i.test(ua) ? " · x86-64" : "");
+  $("specOs").textContent = os + arch;
+
+  if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues){
+    navigator.userAgentData.getHighEntropyValues(["architecture","bitness","platform"]).then(function(d){
+      var extra = [];
+      if (d.platform) extra.push(d.platform);
+      if (d.architecture) extra.push(d.architecture + (d.bitness ? " " + d.bitness + "-bit" : ""));
+      if (extra.length) $("specOs").textContent = extra.join(" · ");
+    }).catch(function(){});
+  }
+  syncVramUI();
+}
+function nearestRam(v){ var opts=[4,8,16,32,64,128]; var best=8; for(var i=0;i<opts.length;i++){ if(opts[i]>=v){ best=opts[i]; break; } best=opts[i]; } return best; }
+
+function syncVramUI(){
+  $("vramInput").value = state.vram ? state.vram : "";
+  $("vramActiveLabel").textContent = state.vram > 0 ? state.vram + " GB" : "0 GB (CPU saja)";
+  $("ramInput").value = state.ram ? state.ram : "";
+  $("ramActiveLabel").textContent = state.ram > 0 ? state.ram + " GB" : "0 GB";
+  $("vramNote").textContent = state.vramLookup !== null && Number(state.vram) !== Number(state.vramLookup)
+    ? "Kamu mengoreksi VRAM dari hasil lookup (" + state.vramLookup + " GB) menjadi " + state.vram + " GB."
+    : (state.vramNote || "");
+  var chips = document.querySelectorAll("[data-vram]");
+  for (var i=0;i<chips.length;i++){
+    chips[i].setAttribute("aria-pressed", String(Number(chips[i].getAttribute("data-vram")) === Number(state.vram)));
+  }
+  var rchips = document.querySelectorAll("[data-ram]");
+  for (var j=0;j<rchips.length;j++){
+    rchips[j].setAttribute("aria-pressed", String(Number(rchips[j].getAttribute("data-ram")) === Number(state.ram)));
+  }
+  renderModels(false);
+}
+function setVram(v){
+  v = Math.max(0, Math.min(256, Number(v)||0));
+  state.vram = v;
+  syncVramUI();
+  showToast("Oke, VRAM dipakai: " + (v>0 ? v+" GB" : "0 GB (CPU saja)") + " — daftarnya dihitung ulang, cuma yang muat yang tampil.");
+}
+function setRam(v){
+  v = Math.max(0, Math.min(256, Number(v)||0));
+  state.ram = v;
+  syncVramUI();
+  showToast("Oke, RAM dipakai: " + v + " GB — daftarnya dihitung ulang, cuma yang muat yang tampil.");
+}
+
+/* ================= UNCENSORED ================= */
+var UNC_WORDS = ["uncensored","abliterated","nsfw","heretic","unfiltered","decensored","de-censored","no-censor","nocensor","uncensor"];
+function isUncensored(model){
+  var hay = (model.id + " " + (model.tags||[]).join(" ")).toLowerCase();
+  for (var i=0;i<UNC_WORDS.length;i++){ if (hay.indexOf(UNC_WORDS[i]) !== -1) return UNC_WORDS[i]; }
+  return null;
+}
+/* Toggle uncensored itu filter eksklusif dua arah:
+   MATI = cuma model biasa (uncensored hilang total).
+   NYALA = CUMA model uncensored (model biasa hilang total). */
+function passesContentFilter(model){
+  var unc = !!isUncensored(model);
+  return state.showUncensored ? unc : !unc;
+}
+
+/* ================= DATA HUGGING FACE ================= */
+var CATS = {
+  text:  { pipeline: "text-generation", label: "Teks ke Teks" },
+  image: { pipeline: "text-to-image",    label: "Teks ke Gambar" },
+  video: { pipeline: "text-to-video",    label: "Teks ke Video" }
+};
+/* Data cadangan: model asli yang dikenal luas, dipakai HANYA saat API HF tidak terjangkau.
+   Tanpa angka trending/unduhan palsu — ditandai jelas di layar. */
+var FALLBACK = {
+  text: [
+    {id:"Qwen/Qwen2.5-7B-Instruct", tags:["text-generation","conversational"], likes:null, downloads:null, trendingScore:null},
+    {id:"meta-llama/Llama-3.1-8B-Instruct", tags:["text-generation","conversational"], likes:null, downloads:null, trendingScore:null},
+    {id:"mistralai/Mistral-7B-Instruct-v0.3", tags:["text-generation","conversational"], likes:null, downloads:null, trendingScore:null},
+    {id:"google/gemma-2-9b-it", tags:["text-generation","conversational"], likes:null, downloads:null, trendingScore:null},
+    {id:"microsoft/Phi-3-mini-4k-instruct", tags:["text-generation","conversational"], likes:null, downloads:null, trendingScore:null},
+    {id:"mlabonne/NeuralDaredevil-8B-abliterated", tags:["text-generation","abliterated","uncensored"], likes:null, downloads:null, trendingScore:null}
+  ],
+  image: [
+    {id:"black-forest-labs/FLUX.1-schnell", tags:["text-to-image","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"black-forest-labs/FLUX.1-dev", tags:["text-to-image","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"stabilityai/stable-diffusion-xl-base-1.0", tags:["text-to-image","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"stable-diffusion-v1-5/stable-diffusion-v1-5", tags:["text-to-image","diffusers"], likes:null, downloads:null, trendingScore:null}
+  ],
+  video: [
+    {id:"Wan-AI/Wan2.1-T2V-1.3B", tags:["text-to-video","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"Wan-AI/Wan2.1-T2V-14B", tags:["text-to-video","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"THUDM/CogVideoX-5b", tags:["text-to-video","diffusers"], likes:null, downloads:null, trendingScore:null},
+    {id:"Lightricks/LTX-Video", tags:["text-to-video","diffusers"], likes:null, downloads:null, trendingScore:null}
+  ]
+};
+var usingFallback = false;
+
+function fetchModels(){
+  var cat = CATS[state.category];
+  var area = $("listArea");
+  area.innerHTML = '<div class="loading-state"><div class="spinner" aria-hidden="true"></div><h3>Sabar, lagi ngambil model trending dari Hugging Face…</h3><p>Kategori: '+escapeHtml(cat.label)+' · urutan: skor trending HF · abis itu dicek satu-satu mana yang muat</p></div>';
+  $("loadMoreWrap").style.display = "none";
+  state.quantCache = {};
+  var url = "https://huggingface.co/api/models?pipeline_tag=" + encodeURIComponent(cat.pipeline) +
+            "&sort=trendingScore&direction=-1&limit=60";
+  fetch(url).then(function(r){
+    if (!r.ok) throw new Error("HF " + r.status);
+    return r.json();
+  }).then(function(list){
+    usingFallback = false;
+    state.models = Array.isArray(list) ? list : [];
+    state.shown = PAGE;
+    renderModels();
+    /* cek ukuran SEMUA model — yang nggak muat nggak ditampilin,
+       dan yang nggak muat otomatis dicariin versi quant-nya */
+    state.models.forEach(function(m){ fetchSize(m, function(){ renderModels(); }); });
+  }).catch(function(){
+    usingFallback = true;
+    state.models = FALLBACK[state.category].slice();
+    state.shown = PAGE;
+    renderModels();
+    state.models.forEach(function(m){ fetchSize(m, function(){ renderModels(); }); });
+  });
+}
+
+/* Ukuran model dari daftar file repo (lazy, per kartu yang tampil) */
+function fetchSize(model, cb){
+  var id = model.id;
+  if (state.sizeCache[id] !== undefined){ cb(state.sizeCache[id]); return; }
+  state.sizeCache[id] = "loading";
+  var url = "https://huggingface.co/api/models/" + id.split("/").map(encodeURIComponent).join("/") + "/tree/main?recursive=true";
+  fetch(url).then(function(r){ if(!r.ok) throw new Error("tree"); return r.json(); })
+  .then(function(files){
+    var info = computeSize(files);
+    state.sizeCache[id] = info;
+    cb(info);
+  }).catch(function(){
+    var est = estimateFromName(id);
+    state.sizeCache[id] = est;
+    cb(est);
+  });
+}
+function isSidecarGGUF(pathLower){
+  var base = pathLower.split("/").pop() || pathLower;
+  /* File pendamping, BUKAN bobot utama model — jangan pernah dipakai buat ukuran.
+     Yang paling sering bikin salah hitung: mmproj (projector vision buat model
+     multimodal, mis. "mmproj-Q8_0.gguf" 0,63 GB di repo Ternary-Bonsai) — namanya
+     mengandung nama quant yang sama kayak file utama, jadi picker lama kena jebakan ini. */
+  if (base.indexOf("mmproj") !== -1) return true;
+  if (base.indexOf("mm-proj") !== -1) return true;
+  if (/^mmproj/.test(base)) return true;
+  if (base.indexOf("projector") !== -1 && base.indexOf("mmproj") === -1 && /\.gguf$/.test(base) && base.indexOf("proj") !== -1 && base.length < 40 && /(^|[-_.])proj/.test(base)) return true;
+  return false;
+}
+function computeSize(files){
+  if (!Array.isArray(files)) return estimateFromName("");
+  var ggufs = [], stTotal = 0, stCount = 0;
+  for (var i=0;i<files.length;i++){
+    var f = files[i];
+    if (f.type !== "file" || !f.size) continue;
+    var p = (f.path||"").toLowerCase();
+    if (/\.gguf$/.test(p)) ggufs.push(f);
+    else if (/\.safetensors$/.test(p)){ stTotal += f.size; stCount++; }
+  }
+  if (ggufs.length){
+    /* Pisahkan bobot utama dari file sidecar (mmproj dkk). Ukuran model
+       SELALU dari bobot utama — sidecar diabaikan total. */
+    var mainGgufs = ggufs.filter(function(f){ return !isSidecarGGUF((f.path||"").toLowerCase()); });
+    var pool = mainGgufs.length ? mainGgufs : ggufs;
+    var pick = null, pickSize = 0;
+    var prefs = ["q4_k_m","q4_k_s","q4_0","q5_k_m","q5_0","q3_k_m","q6_k","q8_0","f16"];
+    for (var j=0;j<prefs.length && !pick;j++){
+      var cands = [];
+      for (var k=0;k<pool.length;k++){ if (pool[k].path.toLowerCase().indexOf(prefs[j]) !== -1) cands.push(pool[k]); }
+      if (!cands.length) continue;
+      /* File pecahan (split) buat quant yang sama dijumlahkan;
+         kalau bukan pecahan, ambil yang PALING GEDE — bukan yang pertama ketemu.
+         Ini yang bikin mmproj-Q8_0 (kecil) nggak akan lagi menang atas file utama Q8_0. */
+      var isSplit = cands.length > 1 && cands.some(function(c){ return /-\d{5}-of-\d{5}/.test(c.path) || /part\s*\d/i.test(c.path); });
+      if (isSplit){
+        var sum = 0; for (var s=0;s<cands.length;s++) sum += cands[s].size;
+        pick = cands[0]; pickSize = sum;
+      } else {
+        cands.sort(function(a,b){ return b.size - a.size; });
+        pick = cands[0]; pickSize = cands[0].size;
+      }
+    }
+    if (!pick){
+      var sorted = pool.slice().sort(function(a,b){return a.size-b.size;});
+      pick = sorted[Math.floor(sorted.length/2)];
+      pickSize = pick.size;
+    }
+    var qm = /(Q\d[^.\/]*|F16|BF16|I\d[^.\/]*)/i.exec(pick.path);
+    return { gb: pickSize/1e9, label: "GGUF " + (qm ? qm[1].toUpperCase() : "") + " · " + formatGB(pickSize/1e9), estimated:false, gguf:true, stGb: stCount ? stTotal/1e9 : null };
+  }
+  if (stCount) return { gb: stTotal/1e9, label: formatGB(stTotal/1e9) + " (safetensors full)", estimated:false, gguf:false, stGb: stTotal/1e9 };
+  return estimateFromName("");
+}
+function estimateFromName(id){
+  var m = /(\d+(?:\.\d+)?)\s*B\b/i.exec(id||"");
+  if (m){
+    var params = parseFloat(m[1]);
+    var gb = params * 0.55; /* perkiraan Q4 */
+    return { gb: gb, label: "± " + formatGB(gb) + " (perkiraan Q4 dari " + m[1] + "B parameter)", estimated:true };
+  }
+  return null;
+}
+
+/* ================= KECOCOKAN ================= */
+function fitFor(sizeInfo){
+  if (!sizeInfo || sizeInfo === "loading" || !sizeInfo.gb) return { key:"unknown", cls:"fit-unknown", text:"Ukuran belum diketahui" };
+  var need = sizeInfo.gb * 1.15 + 0.6;
+  var vram = state.vram, ram = state.ram;
+  if (state.integrated){
+    /* GPU integrated: VRAM + RAM itu pool yang sama — jangan didobel.
+       Pool-nya = angka yang lebih gede di antara RAM / VRAM yang diisi. */
+    var pool = Math.max(ram, vram);
+    if (pool > 0 && need <= pool * 0.85) return { key:"gpu", cls:"fit-gpu", text:"Muat di memori integrated · butuh ±" + formatGB(need) };
+    return { key:"no", cls:"fit-no", text:"Tidak muat · butuh ±" + formatGB(need) };
+  }
+  if (vram > 0 && need <= vram) return { key:"gpu", cls:"fit-gpu", text:"Muat di GPU · butuh ±" + formatGB(need) };
+  if (state.category === "text" && vram > 0 && need <= vram + ram * 0.85) return { key:"runnable", cls:"fit-split", text:"Split GPU + RAM · butuh ±" + formatGB(need) };
+  if (need <= ram * 0.85) return { key:"runnable", cls:"fit-cpu", text: (state.category==="text" ? "Jalan di CPU/RAM" : "CPU offload — lambat banget") + " · butuh ±" + formatGB(need) };
+  return { key:"no", cls:"fit-no", text:"Tidak muat · butuh ±" + formatGB(need) };
+}
+
+/* ================= VERSI QUANT (GGUF) =================
+   Versi full nggak muat tapi quant-nya muat? Langsung cari versi GGUF-nya di HF. */
+function quantSearchTerm(id){
+  var name = id.split("/").slice(1).join("/") || id;
+  return name.replace(/-(instruct|chat|it|base|hf|fp16|bf16)$/i, "");
+}
+function searchQuant(m){
+  var id = m.id;
+  if (state.quantCache[id] !== undefined) return;
+  state.quantCache[id] = "searching";
+  var term = quantSearchTerm(id);
+  var url = "https://huggingface.co/api/models?search=" + encodeURIComponent(term) +
+            "&filter=gguf&sort=downloads&direction=-1&limit=10";
+  fetch(url).then(function(r){ if(!r.ok) throw new Error("search"); return r.json(); })
+  .then(function(list){
+    var author = (id.split("/")[0]||"").toLowerCase();
+    var baseName = term.toLowerCase();
+    var cands = (Array.isArray(list) ? list : []).filter(function(c){ return c.id !== id; });
+    cands.sort(function(a,b){
+      var as = (a.id.split("/")[0]||"").toLowerCase() === author ? 0 : 1;
+      var bs = (b.id.split("/")[0]||"").toLowerCase() === author ? 0 : 1;
+      if (as !== bs) return as - bs;
+      return (b.downloads||0) - (a.downloads||0);
+    });
+    var pick = null;
+    for (var i=0;i<cands.length;i++){
+      var cn = (cands[i].id.split("/").slice(1).join("/")||"").toLowerCase().replace(/-gguf$/,"");
+      if (cn.indexOf(baseName) !== -1 || baseName.indexOf(cn) !== -1){ pick = cands[i]; break; }
+    }
+    if (!pick && cands.length) pick = cands[0];
+    if (!pick){ state.quantCache[id] = "none"; renderModels(); return; }
+    fetchSize(pick, function(info){
+      if (info && info.gb && fitFor(info).key !== "no"){
+        state.quantCache[id] = { repo: pick.id, info: info };
+      } else {
+        state.quantCache[id] = "none";
+      }
+      renderModels();
+    });
+  }).catch(function(){
+    state.quantCache[id] = "none";
+    renderModels();
+  });
+}
+/* Entri tampil buat satu model: cuma ada kalau ada versi yang MUAT.
+   status: "ok" (tampilin) | "checking" (lagi dihitung / lagi nyari quant) | "nofit" (sembunyiin) */
+function getEntry(m){
+  var info = state.sizeCache[m.id];
+  if (info === undefined || info === "loading") return { status:"checking" };
+  if (!info || !info.gb) return { status:"nofit" };
+  var fit = fitFor(info);
+  if (fit.key === "gpu" || fit.key === "runnable"){
+    var sameRepoQuant = !!(info.gguf && info.stGb && fitFor({ gb: info.stGb }).key === "no");
+    return { status:"ok", quant:sameRepoQuant, sameRepo:sameRepoQuant, displayId:m.id, info:info, fit:fit };
+  }
+  /* versi aslinya nggak muat — cek versi quant-nya */
+  var q = state.quantCache[m.id];
+  if (q === undefined){ searchQuant(m); return { status:"checking" }; }
+  if (q === "searching") return { status:"checking" };
+  if (q && q !== "none"){
+    return { status:"ok", quant:true, sameRepo:false, displayId:q.repo, info:q.info, fit:fitFor(q.info) };
+  }
+  return { status:"nofit" };
+}
+
+/* ================= RENDER ================= */
+function escapeHtml(s){
+  return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; });
+}
+function formatNum(n){
+  if (n === null || n === undefined) return "—";
+  if (n >= 1e6) return (n/1e6).toFixed(1).replace(".",",") + " jt";
+  if (n >= 1e3) return (n/1e3).toFixed(1).replace(".",",") + " rb";
+  return String(n);
+}
+function formatGB(gb){
+  if (!gb && gb !== 0) return "—";
+  return (gb >= 10 ? gb.toFixed(1) : gb.toFixed(2)).replace(".",",") + " GB";
+}
+function runHint(model){
+  var tags = (model.tags||[]).join(" ").toLowerCase();
+  if (state.category === "text"){
+    if (tags.indexOf("gguf") !== -1) return "Jalanin lokal pake LM Studio / llama.cpp / Ollama — ambil file GGUF-nya (Q4_K_M paling pas buat kebanyakan GPU).";
+    return "Jalanin lokal pake LM Studio / llama.cpp / Ollama — versi GGUF-nya biasanya ada di repo ini.";
+  }
+  if (state.category === "image") return "Jalanin lokal pake ComfyUI / Forge WebUI — taruh file safetensors-nya di folder model.";
+  return "Jalanin lokal pake ComfyUI + node model videonya — kategori ini paling rakus VRAM, hati-hati.";
+}
+function visibleModels(){
+  var q = state.search.trim().toLowerCase();
+  var out = [];
+  state.models.forEach(function(m){
+    if (!passesContentFilter(m)) return;
+    if (q){
+      var hay = (m.id + " " + (m.tags||[]).join(" ")).toLowerCase();
+      if (hay.indexOf(q) === -1) return;
+    }
+    var e = getEntry(m);
+    if (e.status === "ok") out.push({ model: m, entry: e });
+  });
+  return out;
+}
+var tapeColors = ["", "pink", "teal", "purple"];
+function renderModels(){
+  var area = $("listArea");
+  if (!state.models.length && !usingFallback){
+    area.innerHTML = '<div class="empty-state"><h3>Belum ada data</h3><p>Tekan “Refresh Data HF” buat nyoba lagi.</p></div>';
+    $("loadMoreWrap").style.display = "none";
+    return;
+  }
+  var vis = visibleModels();
+  var checking = 0, hiddenFiltered = 0;
+  state.models.forEach(function(m){
+    if (!passesContentFilter(m)){ hiddenFiltered++; return; }
+    if (getEntry(m).status === "checking") checking++;
+  });
+  var banner = "";
+  if (usingFallback){
+    banner = '<div class="error-state" style="text-align:left"><h3>API Hugging Face lagi nggak bisa dijangkau</h3><p>Yang di bawah ini <b>data cadangan</b> isinya model asli yang terkenal — tanpa urutan trending dan tanpa angka download. Coba “Refresh Data HF” bentar lagi buat data trending beneran.</p></div>';
+  }
+  var statusLine = '<p class="fineprint" style="margin-top:18px"><b>' + vis.length + ' model</b> muat di perangkatmu dan ditampilin di bawah.'
+    + (checking ? ' Lagi ngecek ukuran + nyari versi quant buat ' + checking + ' model lain…' : '')
+    + (hiddenFiltered ? (state.showUncensored
+        ? ' ' + hiddenFiltered + ' model biasa disembunyiin — mode uncensored NYALA, jadi cuma uncensored yang tampil.'
+        : ' ' + hiddenFiltered + ' model uncensored disembunyiin (toggle MATI).') : '')
+    + '</p>';
+  if (!vis.length){
+    if (checking){
+      area.innerHTML = banner + '<div class="loading-state"><div class="spinner" aria-hidden="true"></div><h3>Lagi ngecek satu-satu…</h3><p>Kami lagi ngitung ukuran tiap model, plus nyari versi quant-nya kalau yang full kegedean. Yang muat bakal nongol di sini.</p></div>';
+    } else {
+      area.innerHTML = banner + statusLine + '<div class="empty-state"><h3>Belum ada yang muat</h3><p>Semua model trending lagi kegedean buat perangkatmu, atau pencarianmu keketatan. Coba longgarin pencarian — atau gedein angka VRAM/RAM di atas kalau spek aslimu emang lebih gede.' + (state.showUncensored ? ' Ingat: mode uncensored lagi NYALA, jadi yang dicari cuma model uncensored aja — matiin toggle-nya kalau mau liat model biasa.' : '') + '</p></div>';
+    }
+    $("loadMoreWrap").style.display = "none";
+    return;
+  }
+  var slice = vis.slice(0, state.shown);
+  var html = banner + statusLine + '<div class="grid">';
+  slice.forEach(function(item, idx){
+    var m = item.model, e = item.entry;
+    var unc = isUncensored(m);
+    var info = e.info, fit = e.fit;
+    var dispName = e.displayId.split("/").slice(1).join("/") || e.displayId;
+    var dispAuthor = e.displayId.split("/")[0] || "—";
+    var tags = (m.tags||[]).filter(function(t){ return t.indexOf(":")===-1 && t !== "region:us"; }).slice(0,5);
+    var tape = tapeColors[idx % tapeColors.length];
+    var hint = e.quant
+      ? "Ini versi quant (GGUF) — jalanin pake LM Studio / llama.cpp / Ollama."
+      : runHint(m);
+    html += '<article class="model-card">'
+      + '<div class="tape '+tape+'" aria-hidden="true"></div>'
+      + (usingFallback
+          ? '<div class="rank" aria-label="Data cadangan, bukan peringkat trending">✦</div>'
+          : '<div class="rank" aria-label="Peringkat trending '+(idx+1)+'">'+(idx+1)+'</div>')
+      + '<h3 class="model-name"><a href="https://huggingface.co/'+escapeHtml(e.displayId)+'" target="_blank" rel="noopener">'+escapeHtml(dispName)+'</a></h3>'
+      + '<p class="author">oleh '+escapeHtml(dispAuthor)+' · <a href="https://huggingface.co/'+escapeHtml(e.displayId)+'" target="_blank" rel="noopener">buka di HF ↗</a></p>'
+      + (e.quant && !e.sameRepo ? '<p class="author">versi quant dari '+escapeHtml(m.id)+' — yang full kegedean buat perangkatmu</p>' : '')
+      + '<div class="stats"><span>♥ <b>'+formatNum(m.likes)+'</b></span><span>⬇ <b>'+formatNum(m.downloads)+'</b> download</span>'
+      + (m.trendingScore != null ? '<span>🔥 trending <b>'+Math.round(m.trendingScore)+'</b></span>' : '')
+      + '</div>'
+      + '<div class="tags">'
+      + (unc ? '<span class="sticker-badge red">UNCENSORED</span> ' : '')
+      + (e.quant ? '<span class="sticker-badge teal">VERSI QUANT · GGUF</span>' : '')
+      + '</div>'
+      + '<span class="fit-badge '+fit.cls+'">'+escapeHtml(fit.text)+'</span>'
+      + '<p class="size-line">Ukuran: <b>'+escapeHtml(info.label)+'</b></p>'
+      + (e.quant && !e.sameRepo ? '<p class="size-line">Versi full-nya nggak muat — quant ini yang muat, udah dicariin langsung di HF.</p>' : '')
+      + (e.sameRepo ? '<p class="size-line">Di repo ini, yang muat versi quant-nya (GGUF) — versi full-nya kegedean.</p>' : '')
+      + (tags.length ? '<div class="tags">'+tags.map(function(t){ return '<span class="tag'+(UNC_WORDS.indexOf(t.toLowerCase())!==-1?' hot':'')+'">'+escapeHtml(t)+'</span>'; }).join("")+'</div>' : '')
+      + '<p class="run-hint">'+escapeHtml(hint)+'</p>'
+      + '<div class="card-actions">'
+      + '<button class="btn small" type="button" data-copy="huggingface-cli download '+escapeHtml(e.displayId)+'">Salin Perintah Download</button>'
+      + '<a class="btn yellow small" href="https://huggingface.co/'+escapeHtml(e.displayId)+'" target="_blank" rel="noopener">Ke Hugging Face</a>'
+      + (e.quant && !e.sameRepo ? '<a class="btn small" href="https://huggingface.co/models?search='+encodeURIComponent(quantSearchTerm(m.id))+'&filter=gguf" target="_blank" rel="noopener">Cari Quant Lain</a>' : '')
+      + '</div></article>';
+  });
+  html += '</div>';
+  area.innerHTML = html;
+  $("loadMoreWrap").style.display = vis.length > state.shown ? "block" : "none";
+
+  /* tombol salin */
+  var btns = area.querySelectorAll("[data-copy]");
+  for (var i=0;i<btns.length;i++){
+    btns[i].addEventListener("click", function(){
+      var txt = this.getAttribute("data-copy");
+      copyText(txt);
+    });
+  }
+}
+function copyText(txt){
+  function done(){ showToast("Perintah ke-copy: " + txt); }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ fallbackCopy(txt); done(); });
+  } else { fallbackCopy(txt); done(); }
+}
+function fallbackCopy(txt){
+  var ta = document.createElement("textarea");
+  ta.value = txt; ta.style.position = "absolute"; ta.style.left = "-9999px";
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); }catch(e){}
+  document.body.removeChild(ta);
+}
+var toastTimer = null;
+function showToast(msg){
+  var t = $("toast");
+  t.textContent = msg; t.classList.add("show");
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 3200);
+}
+
+/* ================= EVENTS ================= */
+$("vramApply").addEventListener("click", function(){ setVram($("vramInput").value); });
+$("vramInput").addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); setVram(this.value); } });
+$("vramReset").addEventListener("click", function(){
+  if (state.vramLookup !== null) setVram(state.vramLookup);
+  else showToast("Nggak ada hasil lookup buat di-reset — isi VRAM manual aja ya.");
+});
+var chips = document.querySelectorAll("[data-vram]");
+for (var i=0;i<chips.length;i++){
+  chips[i].addEventListener("click", function(){ setVram(this.getAttribute("data-vram")); });
+}
+$("ramApply").addEventListener("click", function(){ setRam($("ramInput").value); });
+$("ramInput").addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); setRam(this.value); } });
+var rchipsEv = document.querySelectorAll("[data-ram]");
+for (var ri=0;ri<rchipsEv.length;ri++){
+  rchipsEv[ri].addEventListener("click", function(){ setRam(this.getAttribute("data-ram")); });
+}
+var tabs = document.querySelectorAll(".tab");
+for (var j=0;j<tabs.length;j++){
+  tabs[j].addEventListener("click", function(){
+    for (var k=0;k<tabs.length;k++) tabs[k].setAttribute("aria-selected","false");
+    this.setAttribute("aria-selected","true");
+    state.category = this.getAttribute("data-cat");
+    state.shown = PAGE;
+    fetchModels();
+  });
+}
+$("uncToggle").addEventListener("click", function(){
+  state.showUncensored = !state.showUncensored;
+  this.setAttribute("aria-checked", String(state.showUncensored));
+  $("uncState").textContent = state.showUncensored ? "NYALA" : "MATI";
+  state.shown = PAGE;
+  renderModels(true);
+  showToast(state.showUncensored ? "Mode uncensored NYALA — sekarang CUMA model uncensored yang ditampilin, model biasa hilang semua." : "Mode uncensored MATI — model uncensored HILANG total, cuma model biasa yang tampil.");
+});
+$("searchInput").addEventListener("input", function(){
+  state.search = this.value;
+  state.shown = PAGE;
+  renderModels(true);
+});
+$("refreshBtn").addEventListener("click", function(){ state.sizeCache = {}; state.quantCache = {}; fetchModels(); });
+$("loadMoreBtn").addEventListener("click", function(){ state.shown += PAGE; renderModels(true); });
+
+/* ================= MULAI ================= */
+detectSpecs();
+fetchModels();
+})();
+</script>
+</body>
+</html>
