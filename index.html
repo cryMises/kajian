@@ -337,6 +337,7 @@
           <h3>Memori yang dipakai: VRAM <span id="vramActiveLabel">—</span> · RAM <span id="ramActiveLabel">—</span></h3>
           <p>VRAM sama RAM sekarang satu blok — dua-duanya diisi dengan cara yang sama (ketik angka GB-nya, atau tap pilihan cepatnya). Angka lookup kadang meleset dikit (misalnya varian laptop atau edisi khusus), dan RAM dari browser juga cuma perkiraan kasar. Kalau kamu tau angka aslimu, ganti aja di sini — daftar modelnya langsung dihitung ulang, dan tetep cuma yang muat yang tampil.</p>
           <p id="integratedNote" style="display:none;margin:0 0 4px;font-weight:800;font-size:.9rem">GPU kamu <b>integrated</b> — nggak ada VRAM terpisah, GPU dan CPU berbagi RAM yang sama (integrated / unified memory). Jadi yang dihitung satu pool aja: RAM kamu, tanpa dobel hitung VRAM + RAM.</p>
+          <p id="hybridHint" style="display:none;margin:0 0 4px;font-weight:800;font-size:.9rem">Tapi tunggu — yang kedeteksi cuma GPU integrated-nya. Kalau laptopmu sebenernya punya GPU kedua yang lebih kenceng (mis. NVIDIA GeForce RTX / GTX atau AMD Radeon RX), browser kadang emang nggak bisa liat GPU itu karena dia jalan di integrated secara default. Coba atur browser-mu ke mode performa tinggi (di Windows: Settings → System → Display → Graphics → pilih browser-mu → High performance), terus refresh halaman ini. Atau cara paling gampang: isi VRAM manual di bawah sesuai GPU aslimu.</p>
           <div class="mem-pickers">
             <div class="mem-picker">
               <label for="vramInput">VRAM (GPU)<small>Memori khusus kartu grafis — 0 kalau integrated / CPU aja</small></label>
@@ -484,6 +485,7 @@ var VRAM_TABLE = [
   ["rtx 3070 laptop",8,"Varian laptop"],["rtx 3070",8,""],
   ["rtx 3060 ti",8,""],["rtx 3060 laptop",6,"Varian laptop"],["rtx 3060",12,""],
   ["rtx 3050 ti laptop",4,"Varian laptop"],["rtx 3050 laptop",4,"Varian laptop"],["rtx 3050",8,"Ada juga varian 6 GB — koreksi kalau perlu"],
+  ["rtx 2050",4,"Cuma ada varian laptop"],
   ["rtx 2080 ti",11,""],["rtx 2080 super",8,""],["rtx 2080",8,""],
   ["rtx 2070 super",8,""],["rtx 2070",8,""],
   ["rtx 2060 super",8,""],["rtx 2060",12,"Ada juga varian awal 6 GB — koreksi kalau kartumu 6 GB"],
@@ -548,10 +550,10 @@ var state = {
 var PAGE = 9;
 
 /* ================= DETEKSI PERANGKAT ================= */
-function detectGPU(){
+function probeGPU(attrs){
   try{
     var canvas = document.createElement("canvas");
-    var gl = canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    var gl = canvas.getContext("webgl2", attrs) || canvas.getContext("webgl", attrs) || canvas.getContext("experimental-webgl", attrs);
     if (!gl) return null;
     var ext = gl.getExtension("WEBGL_debug_renderer_info");
     var renderer = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
@@ -562,12 +564,22 @@ function detectGPU(){
       // Format umum: ANGLE (Vendor, GPU Name Direct3D11 vs_5_0 ps_5_0, D3D11)
       var cand = parts.filter(function(p){ return !/^(direct3d|d3d|opengl|metal|vulkan)/i.test(p) && !/^(nvidia|amd|intel|apple|qualcomm|arm)$/i.test(p); });
       renderer = cand.length ? cand[cand.length-1].replace(/\s+(Direct3D|OpenGL|Metal|Vulkan).*$/i,"") : parts.join(", ");
-      if (parts.length && /^(nvidia|amd|intel|apple)$/i.test(parts[0]) && renderer.toLowerCase().indexOf(parts[0].toLowerCase())===-1){
-        // biarkan nama GPU apa adanya
-      }
     }
+    var lose = gl.getExtension("WEBGL_lose_context");
+    if (lose) lose.loseContext();
     return renderer.trim();
   }catch(e){ return null; }
+}
+function detectGPU(){
+  // Laptop hybrid (integrated Intel/AMD + GPU diskrit NVIDIA/AMD): konteks WebGL
+  // default jalan di GPU integrated, jadi GPU diskritnya nggak keliatan sama sekali.
+  // Minta konteks "high-performance" dulu — itu yang nyuruh browser pindah ke GPU
+  // diskrit. Hasil diskrit selalu diutamakan dari hasil integrated mana pun.
+  var hi = probeGPU({ powerPreference: "high-performance", failIfMajorPerformanceCaveat: false });
+  if (hi && !isIntegrated(hi)) return hi;
+  var def = probeGPU({ failIfMajorPerformanceCaveat: false });
+  if (def && !isIntegrated(def)) return def;
+  return hi || def;
 }
 function detectSpecs(){
   var status = $("detectStatus");
@@ -611,6 +623,7 @@ function detectSpecs(){
   if (dm){ state.ram = dm; }
   $("specRam").innerHTML = (dm ? "± " + dm + " GB" : "Tidak dibuka browser (dipakai 8 GB)") + "<small>Perkiraan kasar — browser membulatkan ke 2/4/8 GB</small>";
   if (state.integrated) $("integratedNote").style.display = "block";
+  if (state.integrated && /Windows/i.test(ua)) $("hybridHint").style.display = "block";
 
   var os = "Tidak diketahui";
   if (/Windows/i.test(ua)) os = "Windows";
